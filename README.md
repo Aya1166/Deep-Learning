@@ -92,7 +92,8 @@ A simple web interface allows users to upload an image and get predictions in re
 
 ## Screenshots
 
-![App Screenshot](screenshot.png)
+![App Screenshot](accuracy_comparison.png)
+![App Screenshot](confusion_matrix.png)
 
 ### Run the app:
 
