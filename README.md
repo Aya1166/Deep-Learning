@@ -85,7 +85,7 @@ check dataset [here](https://www.kaggle.com/datasets/alessiocorrado99/animals10)
 
 ---
 
-## 🚀 Streamlit Web App (Bonus Feature)
+## 🚀 Streamlit Web App
 
 A simple web interface allows users to upload an image and get predictions in real time.
 [Live Demo](https://deep-learning-tdwmynhaccejvua2kxkzpw.streamlit.app)
