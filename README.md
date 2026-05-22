@@ -92,6 +92,8 @@ A simple web interface allows users to upload an image and get predictions in re
 
 ## Screenshots
 
+![Image Count](assets/image_count.png)
+
 ![Accuracy Comparison](assets/accuracy_comparison.png)
 
 ![Confusion Matrix](assets/confusion_matrix.png)
