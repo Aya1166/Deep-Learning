@@ -18,8 +18,7 @@ The goal is to analyze performance differences between architectures and build a
 
 We use the **Animals-10 dataset** from Kaggle:
 
-🔗 Dataset link:  
-https://www.kaggle.com/datasets/alessiocorrado99/animals10
+check dataset (here)[https://www.kaggle.com/datasets/alessiocorrado99/animals10]
 
 ### Classes include:
 - dog
