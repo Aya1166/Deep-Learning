@@ -2,23 +2,24 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import json
 import os
 
 # -------------------------
 # Load model
 # -------------------------
-MODEL_PATH = "models/best_model.h5"
+MODEL_PATH = "models/best_model.keras"
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # -------------------------
-# Load class names (IMPORTANT FIX)
+# Load class names (FIXED)
 # -------------------------
 with open("classes.json", "r") as f:
     class_indices = json.load(f)
 
-# convert dict -> ordered list
-classes = list(class_indices.keys())
+# flip dict: {"cane": 0, ...} -> {0: "cane", ...}
+classes = {v: k for k, v in class_indices.items()}
 
 # -------------------------
 # UI
@@ -40,13 +41,13 @@ if uploaded_file is not None:
     st.image(image, caption="Uploaded Image", use_container_width=True)
 
     # -------------------------
-    # Preprocessing (MATCH TRAINING)
+    # Preprocessing (FIXED - MobileNetV2)
     # -------------------------
     img = image.resize((224, 224))
     img_array = np.array(img)
 
-    # normalize
-    img_array = img_array / 255.0
+    # MobileNetV2 preprocessing (replaces /255.0)
+    img_array = preprocess_input(img_array)
 
     # add batch dimension
     img_array = np.expand_dims(img_array, axis=0)
@@ -56,7 +57,7 @@ if uploaded_file is not None:
     # -------------------------
     prediction = model.predict(img_array)
 
-    predicted_index = np.argmax(prediction)
+    predicted_index = int(np.argmax(prediction))
     predicted_class = classes[predicted_index]
     confidence = float(np.max(prediction))
 
@@ -65,11 +66,12 @@ if uploaded_file is not None:
     # -------------------------
     st.subheader("Prediction Result")
 
-    st.write(f"🐶 **Predicted Animal:** {predicted_class}")
-    st.write(f"🎯 **Confidence:** {confidence:.2f}")
+    st.write(f"🐾 **Predicted Animal:** {predicted_class}")
+    st.write(f"🎯 **Confidence:** {confidence:.2%}")
 
     st.progress(confidence)
 
     # optional debug
     with st.expander("Show raw probabilities"):
-        st.write(prediction)
+        for idx, prob in enumerate(prediction[0]):
+            st.write(f"{classes[idx]}: {prob:.2%}")
