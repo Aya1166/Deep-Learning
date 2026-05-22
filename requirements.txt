@@ -1,9 +1,7 @@
-tensorflow==2.15.0
+tensorflow
 numpy
 pandas
 matplotlib
-seaborn
 scikit-learn
 pillow
-opencv-python
 streamlit
