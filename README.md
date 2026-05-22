@@ -58,7 +58,7 @@ check dataset [here](https://www.kaggle.com/datasets/alessiocorrado99/animals10)
 | Model        | Validation Accuracy | Comments |
 |--------------|--------------------|----------|
 | CNN          | ~60–70%            | Baseline, limited capacity |
-| ResNet50     | ~75–85%            | Stable but slower learning |
+| ResNet50     | ~40%               | Stable but slower learning |
 | MobileNetV2  | ~85–93%            | Best performing model |
 
 📌 Final selected model: **MobileNetV2**
@@ -88,6 +88,11 @@ check dataset [here](https://www.kaggle.com/datasets/alessiocorrado99/animals10)
 ## 🚀 Streamlit Web App (Bonus Feature)
 
 A simple web interface allows users to upload an image and get predictions in real time.
+[Live Demo](https://deep-learning-tdwmynhaccejvua2kxkzpw.streamlit.app)
+
+## Screenshots
+
+![App Screenshot](screenshot.png)
 
 ### Run the app:
 
