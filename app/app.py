@@ -8,7 +8,7 @@ import os
 # -------------------------
 # Load model
 # -------------------------
-MODEL_PATH = "best_model.h5"
+MODEL_PATH = "models/best_model.h5"
 model = tf.keras.models.load_model(MODEL_PATH)
 
 # -------------------------
